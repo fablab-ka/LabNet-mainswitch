@@ -58,12 +58,14 @@ class Buzzer:
 
             if (now - self.in_state_since) > buzzer_interval:
                 self.in_state_since = now
-                self.buzz_off_divider += 1
-                if self.buzz_off_divider > MAX_BUZZ_DIVIDER:
-                    self.set_buzzing(false)
+
                 if self.is_buzzing:
                     self.disable_buzzer()
                 else:
                     self.enable_buzzer()
+
+                self.buzz_off_divider += 1
+                if self.buzz_off_divider > MAX_BUZZ_DIVIDER:
+                    self.set_buzzing(False)
         else:
             self.disable_buzzer()
