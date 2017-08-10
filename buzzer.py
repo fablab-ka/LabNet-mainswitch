@@ -9,6 +9,7 @@ import RPi.GPIO as GPIO
 
 BUZZER_ON_INTERVAL = 500
 BUZZER_OFF_INTERVAL = 5000
+MAX_BUZZ_DIVIDER = 50
 
 class Buzzer:
     """Represents a Buzzer connected to the system"""
@@ -19,6 +20,7 @@ class Buzzer:
         self.buzzing_state = False
         self.in_state_since = -1
         self.is_low_active = True
+        self.buzz_off_divider = 1
 
         GPIO.setup(self.pin, GPIO.OUT)
 
@@ -50,13 +52,15 @@ class Buzzer:
         if self.buzzing_state:
             now = time.time()
 
-            buzzer_interval = BUZZER_OFF_INTERVAL
+            buzzer_interval = BUZZER_OFF_INTERVAL / self.buzz_off_divider
             if self.is_buzzing:
                 buzzer_interval = BUZZER_ON_INTERVAL
 
             if (now - self.in_state_since) > buzzer_interval:
                 self.in_state_since = now
-
+                self.buzz_off_divider += 1
+                if self.buzz_off_divider > MAX_BUZZ_DIVIDER:
+                    self.set_buzzing(false)
                 if self.is_buzzing:
                     self.disable_buzzer()
                 else:
