@@ -9,7 +9,9 @@ sudo update-rc.d labnet-mainswitch defaults
 
 ````
 
-## circuit diagram
+## circuit diagrams
+
+### Lab switch
 ````
 5V ____/ _____GPIO 14 (PIN 8)
           |
@@ -19,3 +21,27 @@ sudo update-rc.d labnet-mainswitch defaults
           |
           o GND
 ````
+
+### Pen switch
+````
+5V ____/ _____GPIO 15 (PIN 10)
+          |
+          |_
+          | |10k
+          |_|
+          |
+          o GND
+````
+
+### Buzzer
+
+````
+5V ____/ _____GPIO 18 (PIN 12)
+          |
+          |_
+          | |10k
+          |_|
+          |
+          o GND
+````
+
