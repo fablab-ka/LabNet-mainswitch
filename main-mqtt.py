@@ -56,11 +56,7 @@ class Main:
         if self.switch_input.current_value == 0:
             value = "OFF"
 
-        try:
-            client.publish(TOPIC_PUBLISH, payload=value)
-        except Exception as ex:
-            logging.info("mqtt publish failed:")
-            logging.error(ex)
+        self.send_update()
 
 
     def on_connect(self, client, userdata, flags, rc):
