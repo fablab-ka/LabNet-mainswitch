@@ -48,7 +48,7 @@ class Main:
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
 
-        self.client.connect(MQTT_HOST, MQTT_PORT, 60)<
+        self.client.connect(MQTT_HOST, MQTT_PORT, 60)
 
     def on_message(self, client, userdata, msg):
         print ("Message received: " + msg.topic + " " + str(msg.payload))
