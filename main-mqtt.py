@@ -22,7 +22,7 @@ LOG_FILENAME = "/var/log/labnet_mainswitch.log"
 SWITCH_PIN = 14
 PEN_SWITCH_PIN = 15
 BUZZER_PIN = 18
-MQTT_HOST = "http://felicia.flka.space"
+MQTT_HOST = "felicia.flka.space"
 MQTT_PORT = 1883
 CHECKS_PER_SECOND = 60
 
